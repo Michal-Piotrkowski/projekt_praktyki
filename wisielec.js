@@ -10,11 +10,19 @@ let game = {
     start_time: 0,
     endTime: 0,
     isTime: false,
+    game_start: false,
+    difficulty_level: 0,
     letters: ["A", "Ą", "B", "C", "Ć", "D", "E", "Ę", "F", "G", "H", "I", "J", "K", "L", "Ł", "M", "N", "Ń", "O", "Ó", "P", "Q", "R", "S", "Ś", "T", "U", "V", "W", "X", "Y", "Z", "Ż"],
-    riddles: ["FLYING OCTOPUS", "DOM LESTERÓW", "WOJOWNICZY MYSZOJELEŃ", "STWÓRZ BOHATERA", "MAGICAL FIGHTER", "DISCORD", "UNITY", "OŚMIORNICA", "GRY TO NASZA PASJA", "ASTERIELLE SLAYER OF DWARVES"],
+    riddles: [["DISCORD", "UNITY", "OŚMIORNICA"], ["FLYING OCTOPUS", "DOM LESTERÓW", "STWÓRZ BOHATERA", "MAGICAL FIGHTER"], ["GRY TO NASZA PASJA", "ASTERIELLE SLAYER OF DWARVES", "WOJOWNICZY MYSZOJELEŃ"]],
     opis: "rozpoczynamy gre",
     in_game: true,
-    init: function () {
+    init: function (n) {
+        this.difficulty_level = n
+        document.getElementById("game").style.display = "flex";
+        [...document.getElementsByClassName("level")].forEach(element => {
+            element.style.display = "none"
+        });
+        this.game_start = true
         let img = document.createElement("img");
         img.style.width = "300px"
         img.src = "img/img9.png";
@@ -52,7 +60,7 @@ let game = {
             }
         }
         let sign_letters_arr = []
-        let sign_choice = this.riddles[this.signGenerator()]
+        let sign_choice = this.riddles[this.difficulty_level][this.signGenerator()]
         console.log(sign_choice)
 
         for (let i = 0; i < sign_choice.length; i++) {
@@ -113,7 +121,7 @@ let game = {
         }
     },
     signGenerator: function () {
-        let sign_number = Math.floor(Math.random() * this.riddles.length) + 0
+        let sign_number = Math.floor(Math.random() * this.riddles[this.difficulty_level].length) + 0
         return sign_number
     },
 }
@@ -137,7 +145,7 @@ let x = setInterval((e) => {
         game.endTime = new Date()
         document.getElementById("timer").innerHTML = "KONIEC CZASU"
     }
-    else {
+    else if (game.game_start == true) {
         document.getElementById("timer").innerHTML = time / 1000 + "s"
     }
 }, 1)

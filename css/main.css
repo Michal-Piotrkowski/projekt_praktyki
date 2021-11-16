@@ -9,6 +9,37 @@ body{
     margin: 0;
 }
 
+#game{
+    display: none;
+    height: 100vh;
+    padding-top: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('../img/seigaiha.png'); /* Background pattern from Toptal Subtle Patterns */ /*https://www.toptal.com/designers/subtlepatterns/seigaiha/*/
+    margin: 0;
+}
+
+#ask{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.level{
+    width: 400px;
+    height: 50px;
+    background-color: #9c04d8;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px;
+}
+
 .pole{
     display: flex;
     user-select: none;
@@ -45,15 +76,6 @@ body{
 
 #img_div{
     padding-bottom: 50px;
-}
-
-#counter{
-    position: absolute;
-    top: 200px;
-    right: 200px;
-    width: 100px;
-    height: 50px;
-    background-color: #9c04d8
 }
 
 #end{
