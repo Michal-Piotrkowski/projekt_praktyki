@@ -88,6 +88,7 @@ let game = {
                         gsap.to("#end", { duration: 2, x: "50vw", opacity: 1 });
                         clearInterval(x)
                         document.getElementById("timer").innerHTML = "OCTOPUS"
+                        document.getElementById("img").src = "img/octi.png"
                         this.in_game = false
                         this.isTime = false
                     }
