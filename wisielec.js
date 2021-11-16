@@ -110,6 +110,11 @@ let game = {
                 this.mistakes_counter -= 1
                 if (this.mistakes_counter == 1) {
                     this.in_game = false;
+                    for (let i = 0; i < this.answer.length; i++) {
+                        document.getElementById(i + "2").innerHTML = this.answer[i]
+                        console.log(this.answer[i])
+                    }
+                    console.log(this.answer)
                     setTimeout(() => document.getElementById("img").src = "img/img" + (this.mistakes_counter - 1) + ".png", 500)
                     document.getElementById("end").innerHTML = "GAME OVER";
                     document.getElementById("end").style.visibility = "visible";
@@ -137,6 +142,9 @@ let x = setInterval((e) => {
 
     if (time > 7000) {
         game.in_game = false;
+        for (let i = 0; i < game.answer.length; i++) {
+            document.getElementById(i + "2").innerHTML = game.answer[i]
+        }
         setTimeout(() => document.getElementById("img").src = "img/img0.png", 500)
         document.getElementById("end").innerHTML = "GAME OVER";
         document.getElementById("end").style.visibility = "visible";
@@ -146,6 +154,6 @@ let x = setInterval((e) => {
         document.getElementById("timer").innerHTML = "KONIEC CZASU"
     }
     else if (game.game_start == true) {
-        document.getElementById("timer").innerHTML = time / 1000 + "s"
+        document.getElementById("timer").innerHTML = Math.ceil(7 - time / 1000) + "s"
     }
 }, 1)
