@@ -38,6 +38,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 40px;
+    border-radius: 20px;
 }
 
 .pole{

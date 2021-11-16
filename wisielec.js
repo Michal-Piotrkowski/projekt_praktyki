@@ -108,6 +108,7 @@ let game = {
             if (is_okay == false) {
                 document.getElementById("img").src = "img/img" + (this.mistakes_counter - 1) + ".png";
                 this.mistakes_counter -= 1
+                e.style.backgroundColor = "grey"
                 if (this.mistakes_counter == 1) {
                     this.in_game = false;
                     for (let i = 0; i < this.answer.length; i++) {
@@ -140,7 +141,7 @@ let x = setInterval((e) => {
         time = game.endTime - game.start_time
     }
 
-    if (time > 7000) {
+    if (time > 10000) {
         game.in_game = false;
         for (let i = 0; i < game.answer.length; i++) {
             document.getElementById(i + "2").innerHTML = game.answer[i]
@@ -154,6 +155,6 @@ let x = setInterval((e) => {
         document.getElementById("timer").innerHTML = "KONIEC CZASU"
     }
     else if (game.game_start == true) {
-        document.getElementById("timer").innerHTML = Math.ceil(7 - time / 1000) + "s"
+        document.getElementById("timer").innerHTML = Math.ceil(10 - time / 1000) + "s"
     }
 }, 1)
